@@ -17,6 +17,7 @@ body {
     background-color: var(--bg);
     color: var(--text-main);
     overflow: hidden;
+    zoom: 0.80;
 }
 
 .app-container {
