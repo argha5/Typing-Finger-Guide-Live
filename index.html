@@ -116,7 +116,29 @@
             </section>
 
             <!-- Visual Aids -->
-            <section class="visuals-container" aria-label="Keyboard and Hand Visualizers">
+            <div class="visuals-container" aria-label="Keyboard and Hand Visualizers">
+
+                <!-- Left Hand -->
+                <div class="hand-pane left">
+                    <svg class="hand-svg" viewBox="0 0 200 200">
+                        <g id="left-hand" transform="translate(20, 20)">
+                            <path class="hand-shape"
+                                d="M20,100 L20,60 A10,10 0 0,1 40,60 L40,90 L40,40 A10,10 0 0,1 60,40 L60,90 L60,20 A10,10 0 0,1 80,20 L80,90 L80,30 A10,10 0 0,1 100,30 L100,100 L120,120 L120,150 L20,150 Z"
+                                fill="none" stroke-width="2" />
+                            <circle class="finger-dot" id="finger-l-pinky" cx="30" cy="50" r="8" fill="#fbbf24"
+                                opacity="0" />
+                            <circle class="finger-dot" id="finger-l-ring" cx="50" cy="30" r="8" fill="#fbbf24"
+                                opacity="0" />
+                            <circle class="finger-dot" id="finger-l-middle" cx="70" cy="15" r="8" fill="#fbbf24"
+                                opacity="0" />
+                            <circle class="finger-dot" id="finger-l-index" cx="90" cy="25" r="8" fill="#fbbf24"
+                                opacity="0" />
+                            <circle class="finger-dot" id="finger-l-thumb" cx="130" cy="110" r="8" fill="#fbbf24"
+                                opacity="0" />
+                        </g>
+                    </svg>
+                </div>
+
                 <div class="keyboard" id="keyboard">
                     <div class="row">
                         <div class="key" data-key="`">~<br>`</div>
@@ -184,24 +206,10 @@
                     </div>
                 </div>
 
-                <div class="hands-container">
-                    <svg id="hands-svg" viewBox="0 0 600 200">
-                        <g id="left-hand" transform="translate(100, 20)">
-                            <path class="hand-shape"
-                                d="M20,100 L20,60 A10,10 0 0,1 40,60 L40,90 L40,40 A10,10 0 0,1 60,40 L60,90 L60,20 A10,10 0 0,1 80,20 L80,90 L80,30 A10,10 0 0,1 100,30 L100,100 L120,120 L120,150 L20,150 Z"
-                                fill="none" stroke-width="2" />
-                            <circle class="finger-dot" id="finger-l-pinky" cx="30" cy="50" r="8" fill="#fbbf24"
-                                opacity="0" />
-                            <circle class="finger-dot" id="finger-l-ring" cx="50" cy="30" r="8" fill="#fbbf24"
-                                opacity="0" />
-                            <circle class="finger-dot" id="finger-l-middle" cx="70" cy="15" r="8" fill="#fbbf24"
-                                opacity="0" />
-                            <circle class="finger-dot" id="finger-l-index" cx="90" cy="25" r="8" fill="#fbbf24"
-                                opacity="0" />
-                            <circle class="finger-dot" id="finger-l-thumb" cx="130" cy="110" r="8" fill="#fbbf24"
-                                opacity="0" />
-                        </g>
-                        <g id="right-hand" transform="translate(320, 20)">
+                <!-- Right Hand -->
+                <div class="hand-pane right">
+                    <svg class="hand-svg" viewBox="0 0 200 200">
+                        <g id="right-hand" transform="translate(-110, 20)">
                             <path class="hand-shape"
                                 d="M260,100 L260,60 A10,10 0 0,0 240,60 L240,90 L240,40 A10,10 0 0,0 220,40 L220,90 L220,20 A10,10 0 0,0 200,20 L200,90 L200,30 A10,10 0 0,0 180,30 L180,100 L160,120 L160,150 L260,150 Z"
                                 fill="none" stroke-width="2" />
@@ -218,7 +226,8 @@
                         </g>
                     </svg>
                 </div>
-            </section>
+
+            </div>
         </main>
     </div>
 
