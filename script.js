@@ -151,7 +151,7 @@ function renderText() {
         const span = document.createElement('span');
         span.textContent = char;
         span.classList.add('char');
-        if (index === currentCharIndex) span.classList.add('active');
+        if (index === currentCharIndex) span.classList.add('current');
         textDisplay.appendChild(span);
     });
 }
@@ -191,13 +191,16 @@ function handleInput(e) {
     if (inputChar === targetChar) {
         // Correct
         const chars = textDisplay.querySelectorAll('.char');
-        chars[currentCharIndex].classList.remove('active');
+        chars[currentCharIndex].classList.remove('current');
+
+        // Remove incorrect if it was previously marked incorrect (though here logic is simpler, linear)
+        chars[currentCharIndex].classList.remove('incorrect');
         chars[currentCharIndex].classList.add('correct');
 
         currentCharIndex++;
 
         if (currentCharIndex < currentText.length) {
-            chars[currentCharIndex].classList.add('active');
+            chars[currentCharIndex].classList.add('current');
         } else {
             finishLesson();
         }
@@ -221,7 +224,7 @@ function highlightNextKey() {
     const lowerChar = originalChar.toLowerCase();
 
     // Reset previous highlights
-    document.querySelectorAll('.key.active').forEach(k => k.classList.remove('active'));
+    document.querySelectorAll('.key.active-key').forEach(k => k.classList.remove('active-key'));
     document.querySelectorAll('.finger-dot').forEach(d => d.style.opacity = 0);
 
     // Identify if Shift is needed
@@ -247,7 +250,7 @@ function highlightNextKey() {
     if (originalChar === ' ') keySelector = '.key[data-key=" "]';
 
     const keyEl = document.querySelector(keySelector);
-    if (keyEl) keyEl.classList.add('active');
+    if (keyEl) keyEl.classList.add('active-key');
 
     // Highlight Main Finger
     // Map symbols back to their base key for finger lookup
@@ -277,7 +280,7 @@ function highlightNextKey() {
             }
 
             const shiftKeyEl = document.querySelector(shiftKeySelector);
-            if (shiftKeyEl) shiftKeyEl.classList.add('active');
+            if (shiftKeyEl) shiftKeyEl.classList.add('active-key');
 
             const shiftFingerEl = document.getElementById(shiftFingerId);
             if (shiftFingerEl) shiftFingerEl.style.opacity = 1;
@@ -291,4 +294,4 @@ function finishLesson() {
     finalWpmDisplay.textContent = wpmDisplay.textContent;
 }
 
-init();
+window.onload = init;
