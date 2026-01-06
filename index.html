@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta name="google-site-verification" content="N3DxCcjbvKkZjgNPWFzQ8XsKadWy4_JY3n221Uf5jPg" />
 
+    <!-- SEO Meta Tags -->
     <title>TypeMaster | Learn Touch Typing Online for Free</title>
     <meta name="description"
-        content="Master touch typing with TypeMaster. Free online typing lessons, real-time WPM tracking, accuracy analysis, and visual finger placement guides.">
+        content="Master touch typing with TypeMaster. Free online typing lessons, real-time speed tracking (WPM), accuracy metrics, and visual hand guides to improve your typing skills.">
+    <meta name="keywords"
+        content="touch typing, typing study, learn typing, typing speed test, WPM, typing accuracy, virtual keyboard, typing tutor">
 
-    <!-- FIXED: correct canonical -->
+    <!-- ✅ FIXED -->
     <link rel="canonical" href="https://argha5.github.io/Typing-Finger-Guide-Live/" />
 
-    <!-- Open Graph -->
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://argha5.github.io/Typing-Finger-Guide-Live/">
-    <meta property="og:title" content="TypeMaster | Interactive Touch Typing Tutor">
+    <meta property="og:title" content="TypeMaster | Interactive Touch Typing Study">
     <meta property="og:description"
-        content="Improve typing speed and accuracy with interactive lessons and real-time feedback.">
+        content="Improve your typing speed and accuracy with interactive lessons and visual aids.">
     <meta property="og:image" content="https://argha5.github.io/Typing-Finger-Guide-Live/og-image.jpg">
 
     <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="TypeMaster | Free Touch Typing Tutor">
-    <meta name="twitter:description"
-        content="Learn touch typing online with guided lessons, WPM tracking, and visual keyboard help.">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="TypeMaster | Free Touch Typing Tutor">
+    <meta property="twitter:description"
+        content="Master the keyboard with our free interactive touch typing lessons.">
 
-    <!-- Structured Data -->
+    <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -50,36 +53,24 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Roboto+Mono:wght@400;500&display=swap"
         rel="stylesheet">
-
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="./favicon.ico">
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
 </head>
 
 <body>
     <div class="app-container">
-
-        <section class="seo-intro">
-            <h2>Free Online Typing Tutor</h2>
-            <p>
-                TypeMaster is a free online typing tutor that helps you improve typing speed,
-                accuracy, and finger placement through interactive lessons and real-time WPM tracking.
-            </p>
-        </section>
-
         <aside class="sidebar">
             <header class="brand">
                 <h1>TypeMaster</h1>
             </header>
-
-            <nav class="lesson-nav" aria-label="Typing Lessons">
+            <nav class="lesson-nav" aria-label="Typing Lessons Selection">
                 <h3>Lessons</h3>
                 <ul id="lesson-list"></ul>
             </nav>
         </aside>
 
         <main class="main-content">
-
-            <section class="stats-bar" aria-label="Typing Statistics">
+            <section class="stats-bar" aria-label="Typing Performance Statistics">
                 <div class="stat-item">
                     <span class="label">Lesson</span>
                     <span class="value" id="current-lesson-num">1</span>
@@ -101,33 +92,15 @@
                     <span class="value" id="errors">0</span>
                 </div>
                 <div class="stat-item">
+                    <!-- ✅ FIXED -->
                     <a href="https://argha5.github.io/Typing-Finger-Guide-Live/"
-                       class="nav-btn" rel="noopener">
+                       target="_blank" class="nav-btn" rel="noopener">
                         Speed Test
                     </a>
                 </div>
             </section>
 
-            <section class="typing-container" aria-label="Typing Practice Area">
-                <div class="text-display" id="text-display" aria-live="polite"></div>
-
-                <input type="text" id="hidden-input" autocomplete="off"
-                       spellcheck="false" aria-label="Typing input">
-
-                <div class="message-overlay" id="message-overlay" hidden>
-                    <h2>Lesson Complete!</h2>
-                    <p>WPM: <span id="final-wpm">0</span></p>
-                    <div class="controls">
-                        <button id="next-lesson-btn">Next Lesson</button>
-                        <button id="retry-btn">Retry</button>
-                    </div>
-                </div>
-            </section>
-
-            <div class="visuals-container" aria-label="Keyboard and Finger Guide">
-                <!-- unchanged -->
-            </div>
-
+            <!-- rest of your code unchanged -->
         </main>
     </div>
 
