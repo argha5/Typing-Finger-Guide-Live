@@ -94,12 +94,52 @@ const finalWpmDisplay = document.getElementById('final-wpm');
 
 // Init
 function init() {
+    // Handle startup popup
+    const startupPopup = document.getElementById('startup-popup');
+    const popupStartBtn = document.getElementById('popup-start-btn');
+    const dontShowCheckbox = document.getElementById('dont-show-checkbox');
+
+    // Check if user opted to not show popup
+    const hidePopup = localStorage.getItem('typemasterHidePopup') === 'true';
+
+    if (hidePopup) {
+        startupPopup.classList.add('hidden');
+    }
+
+    popupStartBtn.addEventListener('click', () => {
+        // Save preference if checkbox is checked
+        if (dontShowCheckbox.checked) {
+            localStorage.setItem('typemasterHidePopup', 'true');
+        }
+
+        // Animate out
+        startupPopup.style.animation = 'popupFadeIn 0.3s ease-out reverse';
+        setTimeout(() => {
+            startupPopup.classList.add('hidden');
+            hiddenInput.focus();
+        }, 280);
+    });
+
+    // Also allow clicking backdrop to close (optional UX enhancement)
+    startupPopup.querySelector('.popup-backdrop').addEventListener('click', () => {
+        popupStartBtn.click();
+    });
+
     renderLessonList();
     loadLesson(0);
 
     hiddenInput.addEventListener('input', handleInput);
     hiddenInput.addEventListener('blur', () => hiddenInput.focus());
-    document.addEventListener('click', () => hiddenInput.focus()); // Keep focus
+
+    // Only auto-focus if popup is hidden
+    if (hidePopup) {
+        document.addEventListener('click', () => hiddenInput.focus());
+    } else {
+        // Add click listener after popup is dismissed
+        startupPopup.addEventListener('transitionend', () => {
+            document.addEventListener('click', () => hiddenInput.focus());
+        }, { once: true });
+    }
 
     nextLessonBtn.addEventListener('click', () => loadLesson(currentLessonIndex + 1));
     retryBtn.addEventListener('click', () => loadLesson(currentLessonIndex));
