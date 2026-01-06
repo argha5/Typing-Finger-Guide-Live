@@ -12,8 +12,6 @@
         content="Master touch typing with TypeMaster. Free online typing lessons, real-time speed tracking (WPM), accuracy metrics, and visual hand guides to improve your typing skills.">
     <meta name="keywords"
         content="touch typing, typing study, learn typing, typing speed test, WPM, typing accuracy, virtual keyboard, typing tutor">
-
-    <!-- ✅ FIXED -->
     <link rel="canonical" href="https://argha5.github.io/Typing-Finger-Guide-Live/" />
 
     <!-- Open Graph / Facebook -->
@@ -27,16 +25,15 @@
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:title" content="TypeMaster | Free Touch Typing Tutor">
-    <meta property="twitter:description"
-        content="Master the keyboard with our free interactive touch typing lessons.">
+    <meta property="twitter:description" content="Master the keyboard with our free interactive touch typing lessons.">
 
-    <!-- Structured Data (JSON-LD) -->
+    <!-- Structured Data (JSON-LD) for SEO -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
       "name": "TypeMaster",
-      "url": "https://argha5.github.io/Typing-Finger-Guide-Live/",
+      "url": "https://argha5.github.io/typingspeed/",
       "description": "An interactive web application to learn and practice touch typing with real-time feedback.",
       "applicationCategory": "EducationApplication",
       "operatingSystem": "All",
@@ -59,16 +56,20 @@
 
 <body>
     <div class="app-container">
+        <!-- Sidebar Navigation -->
         <aside class="sidebar">
             <header class="brand">
                 <h1>TypeMaster</h1>
             </header>
             <nav class="lesson-nav" aria-label="Typing Lessons Selection">
                 <h3>Lessons</h3>
-                <ul id="lesson-list"></ul>
+                <ul id="lesson-list">
+                    <!-- Lessons populated by JS -->
+                </ul>
             </nav>
         </aside>
 
+        <!-- Main Content -->
         <main class="main-content">
             <section class="stats-bar" aria-label="Typing Performance Statistics">
                 <div class="stat-item">
@@ -92,18 +93,146 @@
                     <span class="value" id="errors">0</span>
                 </div>
                 <div class="stat-item">
-                    <!-- ✅ FIXED -->
-                    <a href="https://argha5.github.io/Typing-Finger-Guide-Live/"
-                       target="_blank" class="nav-btn" rel="noopener">
-                        Speed Test
-                    </a>
+                    <a href="https://argha5.github.io/typingspeed/" target="_blank" class="nav-btn" rel="noopener">Speed
+                        Test</a>
                 </div>
             </section>
 
-            <!-- rest of your code unchanged -->
+            <!-- Typing Area -->
+            <section class="typing-container" aria-label="Typing Input Area">
+                <div class="text-display" id="text-display" aria-live="polite">
+                    <!-- Text to type goes here -->
+                </div>
+                <input type="text" id="hidden-input" autocomplete="off" spellcheck="false"
+                    aria-label="Hidden typing input">
+
+                <div class="message-overlay" id="message-overlay" style="display: none;">
+                    <h2>Lesson Complete!</h2>
+                    <p>WPM: <span id="final-wpm">0</span></p>
+                    <div class="controls">
+                        <button id="next-lesson-btn">Next Lesson</button>
+                        <button id="retry-btn">Retry</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Visual Aids -->
+            <div class="visuals-container" aria-label="Keyboard and Hand Visualizers">
+
+                <!-- Left Hand -->
+                <div class="hand-pane left">
+                    <svg class="hand-svg" viewBox="0 0 200 200">
+                        <g id="left-hand" transform="translate(20, 20)">
+                            <path class="hand-shape"
+                                d="M20,100 L20,60 A10,10 0 0,1 40,60 L40,90 L40,40 A10,10 0 0,1 60,40 L60,90 L60,20 A10,10 0 0,1 80,20 L80,90 L80,30 A10,10 0 0,1 100,30 L100,100 L120,120 L120,150 L20,150 Z"
+                                fill="none" stroke-width="2" />
+                            <circle class="finger-dot" id="finger-l-pinky" cx="30" cy="50" r="8" fill="#fbbf24"
+                                opacity="0" />
+                            <circle class="finger-dot" id="finger-l-ring" cx="50" cy="30" r="8" fill="#fbbf24"
+                                opacity="0" />
+                            <circle class="finger-dot" id="finger-l-middle" cx="70" cy="15" r="8" fill="#fbbf24"
+                                opacity="0" />
+                            <circle class="finger-dot" id="finger-l-index" cx="90" cy="25" r="8" fill="#fbbf24"
+                                opacity="0" />
+                            <circle class="finger-dot" id="finger-l-thumb" cx="130" cy="110" r="8" fill="#fbbf24"
+                                opacity="0" />
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="keyboard" id="keyboard">
+                    <div class="row">
+                        <div class="key" data-key="`">~<br>`</div>
+                        <div class="key" data-key="1">!<br>1</div>
+                        <div class="key" data-key="2">@<br>2</div>
+                        <div class="key" data-key="3">#<br>3</div>
+                        <div class="key" data-key="4">$<br>4</div>
+                        <div class="key" data-key="5">%<br>5</div>
+                        <div class="key" data-key="6">^<br>6</div>
+                        <div class="key" data-key="7">&<br>7</div>
+                        <div class="key" data-key="8">*<br>8</div>
+                        <div class="key" data-key="9">(<br>9</div>
+                        <div class="key" data-key="0">)<br>0</div>
+                        <div class="key" data-key="-">_<br>-</div>
+                        <div class="key" data-key="=">+<br>=</div>
+                        <div class="key backspace" data-key="Backspace">⌫</div>
+                    </div>
+                    <div class="row">
+                        <div class="key tab" data-key="Tab">Tab</div>
+                        <div class="key" data-key="q">Q</div>
+                        <div class="key" data-key="w">W</div>
+                        <div class="key" data-key="e">E</div>
+                        <div class="key" data-key="r">R</div>
+                        <div class="key" data-key="t">T</div>
+                        <div class="key" data-key="y">Y</div>
+                        <div class="key" data-key="u">U</div>
+                        <div class="key" data-key="i">I</div>
+                        <div class="key" data-key="o">O</div>
+                        <div class="key" data-key="p">P</div>
+                        <div class="key" data-key="[">{<br>[</div>
+                        <div class="key" data-key="]">}<br>]</div>
+                        <div class="key backslash" data-key="\">|<br>\</div>
+                    </div>
+                    <div class="row">
+                        <div class="key caps" data-key="CapsLock">Caps</div>
+                        <div class="key" data-key="a">A</div>
+                        <div class="key" data-key="s">S</div>
+                        <div class="key" data-key="d">D</div>
+                        <div class="key" data-key="f">F</div>
+                        <div class="key" data-key="g">G</div>
+                        <div class="key" data-key="h">H</div>
+                        <div class="key" data-key="j">J</div>
+                        <div class="key" data-key="k">K</div>
+                        <div class="key" data-key="l">L</div>
+                        <div class="key" data-key=";">:<br>;</div>
+                        <div class="key" data-key="'">"<br>'</div>
+                        <div class="key enter" data-key="Enter">Enter</div>
+                    </div>
+                    <div class="row">
+                        <div class="key shift-l" data-key="Shift">Shift</div>
+                        <div class="key" data-key="z">Z</div>
+                        <div class="key" data-key="x">X</div>
+                        <div class="key" data-key="c">C</div>
+                        <div class="key" data-key="v">V</div>
+                        <div class="key" data-key="b">B</div>
+                        <div class="key" data-key="n">N</div>
+                        <div class="key" data-key="m">M</div>
+                        <div class="key" data-key=",">&lt;<br>,</div>
+                        <div class="key" data-key=".">&gt;<br>.</div>
+                        <div class="key" data-key="/">?<br>/</div>
+                        <div class="key shift-r" data-key="Shift">Shift</div>
+                    </div>
+                    <div class="row">
+                        <div class="key space" data-key=" ">Space</div>
+                    </div>
+                </div>
+
+                <!-- Right Hand -->
+                <div class="hand-pane right">
+                    <svg class="hand-svg" viewBox="0 0 200 200">
+                        <g id="right-hand" transform="translate(-110, 20)">
+                            <path class="hand-shape"
+                                d="M260,100 L260,60 A10,10 0 0,0 240,60 L240,90 L240,40 A10,10 0 0,0 220,40 L220,90 L220,20 A10,10 0 0,0 200,20 L200,90 L200,30 A10,10 0 0,0 180,30 L180,100 L160,120 L160,150 L260,150 Z"
+                                fill="none" stroke-width="2" />
+                            <circle class="finger-dot" id="finger-r-thumb" cx="150" cy="110" r="8" fill="#fbbf24"
+                                opacity="0" />
+                            <circle class="finger-dot" id="finger-r-index" cx="190" cy="25" r="8" fill="#fbbf24"
+                                opacity="0" />
+                            <circle class="finger-dot" id="finger-r-middle" cx="210" cy="15" r="8" fill="#fbbf24"
+                                opacity="0" />
+                            <circle class="finger-dot" id="finger-r-ring" cx="230" cy="30" r="8" fill="#fbbf24"
+                                opacity="0" />
+                            <circle class="finger-dot" id="finger-r-pinky" cx="250" cy="50" r="8" fill="#fbbf24"
+                                opacity="0" />
+                        </g>
+                    </svg>
+                </div>
+
+            </div>
         </main>
     </div>
 
     <script src="script.js"></script>
 </body>
+
 </html>
